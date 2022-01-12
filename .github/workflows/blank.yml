@@ -25,4 +25,4 @@ jobs:
 
     steps:
       - name: Print the input tag to STDOUT
-        run: echo The tag is ${{ github.event.inputs.tag }}
+        run: echo The logLevel is ${{ github.event.inputs.logLevel }}
