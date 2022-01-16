@@ -18,6 +18,11 @@ on:
         description: 'Environment to run tests against'
         type: environment
         required: true
+
+on:
+  push:
+    tags:
+      - v1**
   
 jobs:
   print-tag:
@@ -26,3 +31,57 @@ jobs:
     steps:
       - name: Print the input tag to STDOUT
         run: echo The logLevel is ${{ github.event.inputs.logLevel }}
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dump github object
+        env:
+          GITHUB_ACTION: ${{ github.action }}
+          GITHUB_ACTION_PATH: ${{ github.action_path }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+          GITHUB_EVENT: ${{ github.event }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REF: ${{ github.ref }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          GITHUB_REF_PROTECTED: ${{ github.ref_protected }}
+          GITHUB_REF_TYPE: ${{ github.ref_type }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+          GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+        run: |
+          echo "GITHUB_ACTION: ${GITHUB_ACTION}"
+          echo "GITHUB_ACTION_PATH: ${GITHUB_ACTION_PATH}"
+          echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
+          echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
+          echo "GITHUB_EVENT: ${GITHUB_EVENT}"
+          echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+          echo "GITHUB_EVENT_PATH: ${GITHUB_EVENT_PATH}"
+          echo "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
+          echo "GITHUB_JOB: ${GITHUB_JOB}"
+          echo "GITHUB_REF: ${GITHUB_REF}"
+          echo "GITHUB_REF_NAME: ${GITHUB_REF_NAME}"
+          echo "GITHUB_REF_PROTECTED: ${GITHUB_REF_PROTECTED}"
+          echo "GITHUB_REF_TYPE: ${GITHUB_REF_TYPE}"
+          echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+          echo "GITHUB_REPOSITORY_OWNER: ${GITHUB_REPOSITORY_OWNER}"
+          echo "GITHUB_RUN_ID: ${GITHUB_RUN_ID}"
+          echo "GITHUB_RUN_NUMBER: ${GITHUB_RUN_NUMBER}"
+          echo "GITHUB_RUN_ATTEMPT: ${GITHUB_RUN_ATTEMPT}"
+          echo "GITHUB_SERVER_URL: ${GITHUB_SERVER_URL}"
+          echo "GITHUB_SHA: ${GITHUB_SHA}"
+          echo "GITHUB_TOKEN: ${GITHUB_TOKEN}"
+          echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
+          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+
