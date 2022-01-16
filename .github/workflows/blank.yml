@@ -22,7 +22,7 @@ on:
   push:
     tags:
       - v1**
-  
+
 jobs:
   print-tag:
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
           GITHUB_ACTION_PATH: ${{ github.action_path }}
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_BASE_REF: ${{ github.base_ref }}
-          GITHUB_EVENT: ${{ github.event }}
+          #GITHUB_EVENT: ${{ github.event }}
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           GITHUB_EVENT_PATH: ${{ github.event_path }}
           GITHUB_HEAD_REF: ${{ github.head_ref }}
