@@ -8,4 +8,5 @@ line 5
 line 6
 line 2
 commit 1
+commit 2
 ```
