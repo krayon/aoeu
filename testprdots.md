@@ -7,7 +7,4 @@ line 4
 line 5
 line 6
 line 2
-commit 1
-commit 2
-commit 3
 ```
